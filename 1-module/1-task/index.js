@@ -5,5 +5,6 @@
  * @returns {number}
  */
 function pow (m, n) {
-
+ 'use strict';
+ return Math.pow(m,n);
 }
