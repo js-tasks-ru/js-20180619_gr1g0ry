@@ -4,6 +4,25 @@ let calendar = {
 };
 
 calendar[Symbol.iterator] = function () {
+    let current = new Date(this.from);
+    const last = this.to;
+
+    return {
+        next() {
+            if (current <= last) {
+                current.setDate(current.getDate() + 1);
+                let currentDay = current.getDay();
+                let currentDate = ('0' + current.getDate()).substr(-2);
+                console.log(currentDate, currentDay);
+                return {
+                    value: (currentDay === 0 || currentDay === 6) ? `[${currentDate}]` : currentDate,
+                    done: false
+                }
+            }
+            return {done: true};
+        }
+    }
 };
 
 
+console.log([...calendar]);
