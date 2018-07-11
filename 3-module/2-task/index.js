@@ -13,7 +13,6 @@ calendar[Symbol.iterator] = function () {
                 current.setDate(current.getDate() + 1);
                 let currentDay = current.getDay();
                 let currentDate = ('0' + current.getDate()).substr(-2);
-                console.log(currentDate, currentDay);
                 return {
                     value: (currentDay === 0 || currentDay === 6) ? `[${currentDate}]` : currentDate,
                     done: false
@@ -23,6 +22,3 @@ calendar[Symbol.iterator] = function () {
         }
     }
 };
-
-
-console.log([...calendar]);
